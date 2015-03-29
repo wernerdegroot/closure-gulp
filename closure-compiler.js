@@ -28,6 +28,8 @@ module.exports = function(opt, execFile_opt) {
         throw new gutil.PluginError(PLUGIN_NAME, 'Missing option "debug" (should be true or false).');
     if (opt.debug && opt.baseUrl === undefined)
         throw new gutil.PluginError(PLUGIN_NAME, 'Missing option "baseUrl" (should be the base URL of the node server, for instance http://localhost:8080).');
+    if (opt.closureLibraryBasePath === undefined)
+        throw new gutil.PluginError(PLUGIN_NAME, 'Missing option "closureLibraryBasePath" (should point to base.js).');
 
     var files = [];
     var firstFile = null;
@@ -38,7 +40,7 @@ module.exports = function(opt, execFile_opt) {
         var src = files.map(function(file) {
             var relativePath = path.relative(file.cwd, file.path);
             return jsFlag + relativePath;
-        }).join('\n') + '\n' + jsFlag + 'bower_components/closure-library/closure/goog/base.js';
+        }).join('\n') + '\n' + jsFlag + opt.closureLibraryBasePath;
         return tempWrite.sync(src);
     };
     
@@ -122,12 +124,11 @@ module.exports = function(opt, execFile_opt) {
                 return;
             }
             
-            var fileContents;
+            var fileContents = '';
             if (opt.debug) {
                 // Convert the manifest file (a file with all .js-files on a new line)
                 // to a file that 'includes' these .js-files.
                 var sourceFiles = fs.readFileSync(manifestFileName).toString().split("\n");
-                fileContents = documentWriteStatement('bower_components/closure-library/closure/goog/base.js');
                 sourceFiles.forEach(function(sourceFile) {
                     if (sourceFile !== '') {
                         fileContents += documentWriteStatement(sourceFile);

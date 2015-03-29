@@ -64,6 +64,7 @@ var build = function(filesToProcess, entryPoints, destination, debug) {
                 // Run the code through the Google Closure Compiler.
                 .pipe(closure({
                     compilerPath: bowerComponentsDir + '/closure-compiler/compiler.jar',
+                    closureLibraryBasePath: bowerComponentsDir + '\\closure-library\\closure\\goog\\base.js',
                     fileName: fileName,
                     debug: debug,
                     baseUrl: 'http://localhost:8080',
