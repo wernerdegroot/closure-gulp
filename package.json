@@ -1,0 +1,26 @@
+{
+  "name": "closure-gulp",
+  "version": "0.0.0",
+  "description": "Integration between the Google Closure Compiler and Gulp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wernerdegroot/closure-gulp.git"
+  },
+  "author": "Werner de Groot (closure-gulp@wernerdegroot.nl)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wernerdegroot/closure-gulp/issues"
+  },
+  "homepage": "https://github.com/wernerdegroot/closure-gulp",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-bower": "0.0.10",
+    "gulp-clean": "^0.3.1",
+    "gulp-connect": "^2.2.0",
+    "gulp-util": "^3.0.4",
+    "merge-stream": "^0.1.7",
+    "temp-write": "^1.1.0",
+    "through": "^2.3.6",
+    "yargs": "^3.6.0"
+  }
+}
