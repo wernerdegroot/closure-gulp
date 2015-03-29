@@ -44,10 +44,14 @@ var build = function(filesToProcess, entryPoints, destination, debug) {
         var fileName = path.basename(filePath);
 
         var compilerFlags = {
-            compilation_level: 'SIMPLE_OPTIMIZATIONS',
-            jscomp_warning: ['checkTypes', 'accessControls', 'unknownDefines', 'const'],
+            compilation_level: 'ADVANCED_OPTIMIZATIONS',
+            jscomp_warning: ['accessControls', 'checkTypes', 'checkVars', 'const', 'duplicate', 'globalThis', 'invalidCasts', 'undefinedNames', 'undefinedVars'],
             process_closure_primitives: null,
+            generate_exports: null,
             externs: [
+                'externs/angular-1.3.js',
+                'externs/angular-1.3-http-promise_templated.js',
+                'externs/angular-1.3-q_templated.js'
             ]
         };
 
@@ -59,7 +63,7 @@ var build = function(filesToProcess, entryPoints, destination, debug) {
 
                 // Run the code through the Google Closure Compiler.
                 .pipe(closure({
-                    compilerPath: 'node_modules/closure-compiler/lib/vendor/compiler.jar',
+                    compilerPath: bowerComponentsDir + '/closure-compiler/compiler.jar',
                     fileName: fileName,
                     debug: debug,
                     baseUrl: 'http://localhost:8080',
@@ -80,7 +84,7 @@ gulp.task('closure', ['clean-dist-src'], function() {
 
     // Mapping from entry point (global id) to target file name.
     var allEntryPoints = {
-
+        'test.main': 'test.js'
     };
 
     var entryPoints = null;

@@ -34,10 +34,11 @@ module.exports = function(opt, execFile_opt) {
 
     // Create a file with the --js-flags (each on a new line) and return its path.
     var getFlagFilePath = function(files) {
+        var jsFlag = '--js=';
         var src = files.map(function(file) {
             var relativePath = path.relative(file.cwd, file.path);
-            return '--js=' + relativePath;
-        }).join('\n');
+            return jsFlag + relativePath;
+        }).join('\n') + '\n' + jsFlag + 'bower_components/closure-library/closure/goog/base.js';
         return tempWrite.sync(src);
     };
     
