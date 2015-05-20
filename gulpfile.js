@@ -48,6 +48,8 @@ var build = function(filesToProcess, entryPoints, destination, debug) {
             jscomp_warning: ['accessControls', 'checkTypes', 'checkVars', 'const', 'duplicate', 'globalThis', 'invalidCasts', 'undefinedNames', 'undefinedVars'],
             process_closure_primitives: null,
             generate_exports: null,
+            language_in: 'ECMASCRIPT6',
+            language_out: 'ES5',
             externs: [
                 'externs/angular-1.3.js',
                 'externs/angular-1.3-http-promise_templated.js',

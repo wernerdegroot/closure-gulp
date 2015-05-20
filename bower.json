@@ -1,9 +1,11 @@
 {
-    "name": "closure-compiler",
-    "dependencies": {
-        "closure-library": "google/closure-library",
-        "angular": "~1.3.6",
-        "angular-resource": "~1.3.6",
-        "closure-compiler": "http://dl.google.com/closure-compiler/compiler-latest.zip"
-    }
+  "name": "closure-compiler",
+  "dependencies": {
+    "closure-library": "google/closure-library",
+    "angular": "~1.3.6",
+    "angular-resource": "~1.3.6",
+    "closure-compiler": "http://dl.google.com/closure-compiler/compiler-20150315.zip",
+    "mocha": "~2.2.1",
+    "chai": "~2.2.0"
+  }
 }
