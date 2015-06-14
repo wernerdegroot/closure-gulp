@@ -16,9 +16,7 @@ MyController = function ($q) {
 	this.promise = this.deferred.promise;
 	
 	var resolvedPromise = this.onResolve("When resolved: ");
-	resolvedPromise.then(function () {
-		console.log('Done resolving!');
-	});
+	resolvedPromise.then(() => console.log('Done resolving!'));
 };
 
 /** @export */
