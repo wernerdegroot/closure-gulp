@@ -44,7 +44,7 @@ var build = function(filesToProcess, entryPoints, destination, debug) {
         var fileName = path.basename(filePath);
 
         var compilerFlags = {
-            compilation_level: 'ADVANCED_OPTIMIZATIONS',
+            compilation_level: 'SIMPLE_OPTIMIZATIONS',
             jscomp_warning: ['accessControls', 'checkTypes', 'checkVars', 'const', 'duplicate', 'globalThis', 'invalidCasts', 'undefinedNames', 'undefinedVars'],
             process_closure_primitives: null,
             generate_exports: null,
