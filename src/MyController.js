@@ -5,9 +5,11 @@ goog.require('utils.async');
 /**
  * @constructor
  * @param {!angular.$q} $q
+ * @export
  */
 MyController = function ($q) {
 	
+	/** @export @type {string} */
 	this.henk = 'Henk';
 	
 	this.deferred = $q.defer();
@@ -19,8 +21,10 @@ MyController = function ($q) {
 	});
 };
 
+/** @export */
 MyController.$inject = ['$q'];
 
+/** @export */
 MyController.prototype.onClick = function () {
 	this.deferred.resolve('Henk!');	
 };

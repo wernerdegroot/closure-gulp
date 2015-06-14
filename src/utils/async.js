@@ -16,7 +16,7 @@ utils.async = function async(generatorFunction) {
     return function(/* ...args */) {
         
         // Call the generator function with the supplied arguments
-        // and the right context (this). This will yield a generator. 
+        // and the right context (this). This will yield a generator.
         var generator = generatorFunction.apply(this, arguments);
         
         return promiseConstructor(function(/** function(*): undefined */ resolve, /** function(*): undefined */ reject) {
