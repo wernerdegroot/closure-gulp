@@ -43,23 +43,26 @@ var build = function(filesToProcess, entryPoints, destination, debug) {
         var filePath = entryPoints[main];
         var fileName = path.basename(filePath);
 
+        // See https://github.com/google/closure-compiler/wiki/Warnings for an explanation of the warnings below:
+        var warnings = ['accessControls', 'ambiguousFunctionDecl', 'checkTypes', 'checkVars', 'const', 'duplicate', 'extraRequire', 'globalThis', 'invalidCasts', 'missingProvide', 'missingRequire', 'missingReturn', 'undefinedNames', 'undefinedVars', 'uselessCode'];
+
+        // See https://github.com/steida/gulp-closure-compiler/blob/master/flags.txt for an explanation of the flags below:
         var compilerFlags = {
             compilation_level: 'ADVANCED_OPTIMIZATIONS',
-            jscomp_warning: ['accessControls', 'checkTypes', 'checkVars', 'const', 'duplicate', 'globalThis', 'invalidCasts', 'undefinedNames', 'undefinedVars'],
+            jscomp_warning: warnings,
             process_closure_primitives: null,
             export_local_property_definitions: null,
             generate_exports: null,
             language_in: 'ECMASCRIPT6',
             language_out: 'ES5',
+            manage_closure_dependencies: null,
+            closure_entry_point: main,
             externs: [
                 'externs/angular-1.3.js',
                 'externs/angular-1.3-http-promise_templated.js',
                 'externs/angular-1.3-q_templated.js'
             ]
         };
-
-        compilerFlags.manage_closure_dependencies = null;
-        compilerFlags.closure_entry_point = main;
 
         var stream = gulp
                 .src(filesToProcess)
